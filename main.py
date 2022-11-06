@@ -5,6 +5,7 @@ from datetime import datetime
 from PyQt6 import QtWidgets, QtCore, QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLabel, QDialog
 import sys
+import time
 
 
 Database = pd.read_pickle('pass')
@@ -158,7 +159,7 @@ class UI(object):
         self.mastPass.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px")
         self.mastPass.setObjectName("MastPass")
-        # self.mastPass.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
+        self.mastPass.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
 
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(580, 160, 61, 21))
@@ -178,7 +179,6 @@ class UI(object):
         self.Details.setStyleSheet("background-color: rgba(255, 255, 255, 100);")
         self.Details.setObjectName("Details")
         self.Details.setColumnCount(3)
-        self.Details.setRowCount(len(Database))
         item = QtWidgets.QTableWidgetItem()
         self.Details.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -245,19 +245,11 @@ class UI(object):
         item = self.Details.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Last Updated"))
 
-    def loaddata(self):
-        row = 0
-        table = self.Details
-        for user in Database.index:
-            table.setItem(row, 0, QtWidgets.QTableWidgetItem(user))
-            table.setItem(row, 1, QtWidgets.QTableWidgetItem(str(Database.Site[user])))
-            table.setItem(row, 2, QtWidgets.QTableWidgetItem(str(Database.DnT[user])))
-            row += 1
 
     def userDat(self):
         user = self.user.text()
         acckey = self.mastPass.text()
-        if user not in Database.index or user == Database.index:
+        if user not in Database.index:
             self.u_display.setText('User Not Found!')
         else:
             if acckey == MP:
@@ -275,12 +267,26 @@ class UI(object):
                 self.pass_display.setText('Incorrect Access Key')
 
     def addu(self):
-        print('added')
         user = self.adduser.text()
         site = self.addsite.text()
         pswd = self.addpass.text()
         Add(user, pswd, site)
+        print('added', Database)
+        self.updata()
 
+    def updata(self):
+        self.Details.clearContents()
+        self.loaddata()
+
+    def loaddata(self):
+        self.Details.setRowCount(len(Database))
+        row = 0
+        table = self.Details
+        for user in Database.index:
+            table.setItem(row, 0, QtWidgets.QTableWidgetItem(user))
+            table.setItem(row, 1, QtWidgets.QTableWidgetItem(str(Database.Site[user])))
+            table.setItem(row, 2, QtWidgets.QTableWidgetItem(str(Database.DnT[user])))
+            row += 1
 
 
 def main():
