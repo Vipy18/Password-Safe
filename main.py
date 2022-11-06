@@ -251,6 +251,12 @@ class UI(object):
         acckey = self.mastPass.text()
         if user not in Database.index:
             self.u_display.setText('User Not Found!')
+            pswd = "Password: "
+            sd = 'Site: '
+            lud = 'Last Updated: '
+            self.pass_display.setText(pswd)
+            self.s_display.setText(sd)
+            self.LU.setText(lud)
         else:
             if acckey == MP:
                 det = Collect(user)
@@ -258,13 +264,19 @@ class UI(object):
                 ud = 'User: ' + user
                 sd = 'Site: ' + det[1]
                 lud = 'Last Updated: ' + det[2]
-                print(pswd)
+                #print(pswd)
                 self.pass_display.setText(pswd)
                 self.u_display.setText(ud)
                 self.s_display.setText(sd)
                 self.LU.setText(lud)
             else:
                 self.pass_display.setText('Incorrect Access Key')
+                ud = 'User: '
+                sd = 'Site: '
+                lud = 'Last Updated: '
+                self.u_display.setText(ud)
+                self.s_display.setText(sd)
+                self.LU.setText(lud)
 
     def addu(self):
         user = self.adduser.text()
