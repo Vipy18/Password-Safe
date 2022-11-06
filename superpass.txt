@@ -1,4 +1,0 @@
-user: admin
-pass: admin1234
-key: b'h576qIEjcKaDGuHKxvOiQEjwBM1uJlFwBLG4CNVjN_s='
-enc_pass: b'gAAAAABjZkkMnGfXPFu7-Ezhnt_XwC97jyzFirGbncIXADdyextythrIDOyerK6fiWYUHY3hsHO0QxuUOQLqCr73oCYFviy56g=='
