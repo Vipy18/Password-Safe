@@ -11,7 +11,7 @@ import time
 Database = pd.read_pickle('pass')
 f = Database.Key['MastPass']
 MP = f.decrypt(Database.at['MastPass','Pass']).decode()
-print(MP)
+#print(MP)
 # The data in encrypted form has its own datatype and class, if we save it to CSV, it gets turned into string.
 # String cannot be decrypted by library as it is.
 # To prevent that, we're using to_pickle().
@@ -20,7 +20,6 @@ print(MP)
 class UI(object):
     def __init__(self):
         super(UI, self).__init__()
-
 
 
     def setupUi(self, MainWindow):
@@ -139,9 +138,10 @@ class UI(object):
         self.addpass.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 10px")
         self.addpass.setObjectName("addpass")
+        self.addpass.setEchoMode(QtWidgets.QLineEdit.EchoMode.PasswordEchoOnEdit)
 
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(590, 479, 51, 21))
+        self.label_6.setGeometry(QtCore.QRect(580, 479, 61, 21))
         self.label_6.setStyleSheet("background-color: rgba(255, 255, 255, 100);\n"
 "border-radius: 5px")
         self.label_6.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -162,7 +162,7 @@ class UI(object):
         self.mastPass.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
 
         self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setGeometry(QtCore.QRect(580, 160, 61, 21))
+        self.label_7.setGeometry(QtCore.QRect(560, 160, 81, 21))
         self.label_7.setStyleSheet("background-color: rgba(255, 255, 255, 100);\n"
 "border-radius: 5px")
         self.label_7.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -230,14 +230,14 @@ class UI(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Password Safe"))
         self.label_3.setText(_translate("MainWindow", "Password Safe"))
-        self.label.setText(_translate("MainWindow", "User:"))
+        self.label.setText(_translate("MainWindow", "User*:"))
         self.label_2.setText(_translate("MainWindow", "Site:"))
         self.GetPass.setText(_translate("MainWindow", "Get Password"))
         self.label_4.setText(_translate("MainWindow", "User:"))
         self.label_5.setText(_translate("MainWindow", "Site:"))
         self.label_6.setText(_translate("MainWindow", "Password:"))
         self.Add.setText(_translate("MainWindow", "Add"))
-        self.label_7.setText(_translate("MainWindow", "Acess Key:"))
+        self.label_7.setText(_translate("MainWindow", "Acess Key*:"))
         item = self.Details.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "User"))
         item = self.Details.horizontalHeaderItem(1)
@@ -283,7 +283,7 @@ class UI(object):
         site = self.addsite.text()
         pswd = self.addpass.text()
         Add(user, pswd, site)
-        print('added', Database)
+        #print('added', Database)
         self.updata()
 
     def updata(self):
