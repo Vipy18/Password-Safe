@@ -8,7 +8,7 @@ pswd = input('Access Key:\n')
 pkey = Fernet.generate_key()
 fernet = Fernet(pkey)
 pswdencd = fernet.encrypt(pswd.encode())
-B = pd.read_pickle('Clean Data\CleanPass')
+B = pd.read_pickle('Clean Data\CleanpPass')
 for user in B.index:
     B = B.drop(user, axis=0)
 
