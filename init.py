@@ -3,12 +3,12 @@ from cryptography.fernet import Fernet
 
 # Use this to reset or initialize pass file
 # A sample or Original Pass file is needed for this, find it in Clear Data Folder
-print(r"You need to enter access key, it'll be used to extract you password. Be sure to remember it")
+print(r"You need to enter access key, it'll be used to extract you password. Be sure to remeber it")
 pswd = input('Access Key:\n')
 pkey = Fernet.generate_key()
 fernet = Fernet(pkey)
 pswdencd = fernet.encrypt(pswd.encode())
-B = pd.read_pickle('pass')
+B = pd.read_pickle('Clean Data\pass')
 for user in B.index:
     B = B.drop(user, axis=0)
 
