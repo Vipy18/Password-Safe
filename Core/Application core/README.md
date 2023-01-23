@@ -6,7 +6,7 @@
 #### --> Run _**init.py**_ and set the master password (access key) of your choice.
 #### --> Run _**Main.py**_ to open.
 
-========
+=========
 
 ## **To Store Password:**
 #### --> Enter _Username*, website/application/forum, and Password*_ in 'Add Password' area.
@@ -19,11 +19,16 @@ _(* required)_
 #### --> Access key is the master password you entered while initiating the Password Safe.
 _(* required)_
 
-========
+=========
 
 ## **To Reset Access Key:**
 #### --> Run _**init.py**_ to reset master password (access key).
 #### --> They Access Key is reset now.
 #### --> It is advised to Change Access Key if you forgot it or it has been compromised.
 
+=========
+
+## **To Build executable (.exe):**
+#### --> Run _**exe.cmd**__
+#### --> Follow main **"README.md** for usage guide.
 >>>>>>>>>
