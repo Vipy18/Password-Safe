@@ -13,7 +13,7 @@ while True:
     try:
         if os.path.exists("pass"):
             print('Resetting Access Key...')
-            B = pd.read_pickle('pass')
+            B = pd.read_pickle(r'pass')
             break
         else:
             raise ValueError
