@@ -18,6 +18,7 @@ while True:
         else:
             raise ValueError
     except ValueError:
+        print('Setting up Access Key...')
         B = pd.read_pickle(r'Clean Data\CleanpPass')
         for user in B.index :
             B = B.drop(user, axis=0)
