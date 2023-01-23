@@ -23,6 +23,7 @@ class UI(object):
 
 
     def setupUi(self, MainWindow):
+        MainWindow.setWindowIcon(QtGui.QIcon(r'icon.ico'))
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
         MainWindow.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.466, y1:0, x2:0.568, y2:1, stop:0 rgba(38, 150, 250, 255), stop:1 rgba(255, 76, 255, 255));\n"

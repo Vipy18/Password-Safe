@@ -3,7 +3,7 @@ from cryptography.fernet import Fernet
 
 # Use this to reset or initialize pass file
 # A sample or Original Pass file is needed for this, find it in Clear Data Folder
-print(r"You need to enter access key, it'll be used to extract you password. Be sure to remeber it")
+print(r"You need to enter access key, it'll be used to extract you password. Be sure to remember it")
 pswd = input('Access Key:\n')
 pkey = Fernet.generate_key()
 fernet = Fernet(pkey)
