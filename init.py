@@ -1,5 +1,6 @@
 import pandas as pd
 from cryptography.fernet import Fernet
+import os
 
 # Use this to reset or initialize pass file
 # A sample or Original Pass file is needed for this, find it in Clear Data Folder
@@ -8,12 +9,24 @@ pswd = input('Access Key:\n')
 pkey = Fernet.generate_key()
 fernet = Fernet(pkey)
 pswdencd = fernet.encrypt(pswd.encode())
-B = pd.read_pickle('Clean Data\CleanpPass')
-for user in B.index:
-    B = B.drop(user, axis=0)
+while True:
+    try:
+        if os.path.exists("pass"):
+            print('Resetting Access Key...')
+            B = pd.read_pickle('pass')
+            break
+        else:
+            raise ValueError
+    except ValueError:
+        B = pd.read_pickle(r'Clean Data\CleanpPass')
+        for user in B.index :
+            B = B.drop(user, axis=0)
+        break
+
 
 B.at['MastPass', 'Pass'] = pswdencd
 B.at['MastPass', 'Site'] = 'root'
 B.at['MastPass', 'Key'] = fernet
 print(B)
 B.to_pickle('pass')
+input("Press Any Key to Finish...")
