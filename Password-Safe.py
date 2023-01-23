@@ -335,15 +335,7 @@ def Collect(user):
 
 
 main()
-#Uid = input("UID:")
-#pwd = input("pswd:")
-#isite = input("site:")
-#Add(Uid, pwd, isite)
-#print(Database.DnT[Uid])
-#UidC = input("Enter User to be displayed:\n")
-#det = Collect(UidC)
-#print("Details:")
-#print("User:\n", UidC)
-#print("Pswd:\n", det[0])
-#print("Site:\n", det[1])
-#print("Last Saved (date-time):\n", det[2])
+# Credits:
+# Kewal Thacker
+# Prachet Rane
+# Vipul Deshmukh
